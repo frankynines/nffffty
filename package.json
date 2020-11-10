@@ -2,15 +2,24 @@
   "name": "learn-starter",
   "version": "0.1.0",
   "private": true,
-"scripts": {
+  "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next export"  
+    "export": "next export",
+    "blockchain": "truffle compile && truffle migrate"
   },
   "dependencies": {
+    "@fleekhq/fleek-storage-js": "^1.0.2",
+    "axios": "^0.21.0",
+    "babel-plugin-inline-json": "^1.2.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-define": "^1.3.0",
+    "ipfs-api": "^17.2.6",
     "next": "^10.0.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "styled-components": "^5.2.1",
+    "web3": "^1.0.0-beta.27"
   }
 }

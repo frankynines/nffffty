@@ -6,7 +6,7 @@ const FormData = require('form-data');
 
 
 
-export const pinFileToIPFS = (image) => {
+export const pinFileToIPFS = (image, params) => {
   
 
   const url = 'https://api.pinata.cloud/pinning/pinFileToIPFS';
@@ -15,10 +15,8 @@ export const pinFileToIPFS = (image) => {
   data.append('file', image);
 
   const metadata = JSON.stringify({
-      name: 'DoodleSquaa',
-      keyvalues: {
-          exampleKey: 'exampleValue'
-      }
+      name: params.name,
+      keyvalues: params
   });
   data.append('pinataMetadata', metadata);
 

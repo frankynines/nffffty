@@ -111,7 +111,7 @@ export default function NFT() {
 
 
           <ButtonPrimary>Purchase NFT</ButtonPrimary>
-          <ButtonSecondary onClick={unPinPin}>Delete NFT</ButtonSecondary>
+          <ButtonSecondary >Delete NFT</ButtonSecondary>
 
           </MetaDiv>
         </Container>

@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const Web3 = require('web3');
 
 const GlobalStyle = createGlobalStyle`
     html,
@@ -85,15 +86,27 @@ const GlobalStyle = createGlobalStyle`
 function MyApp({ Component, pageProps }) {
 
   const [BodyOverFlow, setBodyOverFlow] = useState("auto");
+  const [UserWallet, setUserWallet] = useState("");
 
   useEffect(() => {
-    console.log("USE EFFECT")
+    console.log("USE EFFECT");
+    ethEnabled();
   }, [])
+
+  const ethEnabled = () => {
+    if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvider);
+      window.ethereum.enable();
+      setUserWallet(web3.eth.currentProvider.selectedAddress);
+      return true;
+    }
+    return false;
+  }
 
   return (
     <>
         <GlobalStyle overflow={BodyOverFlow}/>
-        <Header />
+        <Header wallet={UserWallet}/>
         <Component {...pageProps}/>
         <Footer />
     </>

@@ -9,7 +9,5 @@ export default function Index() {
     router.push('/');
   });
 
-  
-
   return <></>
 }

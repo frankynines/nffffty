@@ -63,8 +63,6 @@ const Price = styled.span`
   margin-left: 20px;
 `;
 
-
-
 export default function NFT() {
 
     const router = useRouter()
@@ -84,6 +82,7 @@ export default function NFT() {
 
     const unPinPin = (hash) => {
         removePinFromIPFS(id).then( result => {
+          alert("Deleted!")
           console.log(result)
         });
     }
@@ -111,7 +110,7 @@ export default function NFT() {
 
 
           <ButtonPrimary>Purchase NFT</ButtonPrimary>
-          <ButtonSecondary >Delete NFT</ButtonSecondary>
+          <ButtonSecondary onClick={unPinPin} >Delete NFT</ButtonSecondary>
 
           </MetaDiv>
         </Container>

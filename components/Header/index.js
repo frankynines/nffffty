@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Head from 'next/head';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 
 const HeaderContainer = styled.div`
@@ -25,7 +26,9 @@ const LoginBtn = styled.div`
    border-radius: 20px;
 `;
 
-export default function Header() {
+
+export default function Header(wallet) {
+  console.log(wallet.wallet)
   return (
     <HeaderContainer>
           
@@ -37,9 +40,24 @@ export default function Header() {
           <a>Upload</a>
       </Link>
 
-      <LoginBtn >Connect Wallet</LoginBtn>
+      {wallet ? 
+         <>{wallet.wallet}</>
+      :
+        <LoginBtn> Connect Wallet </LoginBtn>
+      }
+
+     
 
 
     </HeaderContainer>
   )
 };
+
+Header.propTypes = {
+  wallet: PropTypes.string
+};
+
+
+
+
+

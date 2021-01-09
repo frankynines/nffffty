@@ -6,11 +6,12 @@ import styled from 'styled-components';
 const Grid = styled.div`
   width: 1080px;
   background-color: white;
-  /* display: grid;
-  grid-template-columns: auto auto auto; */
+  display: grid;
+  grid-template-columns: auto auto auto;
   
   padding: 10px;
   justify-items: center;
+  margin: auto;
 
   @media screen and (max-width: 768px) {
     width: 700px;

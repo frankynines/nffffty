@@ -24,7 +24,6 @@ const LoginBtn = styled.div`
    background-color: #6236FF;
    font-size: 12px;
    border-radius: 20px;
-   overflow: hidden;
 `;
 
 
@@ -41,13 +40,11 @@ export default function Header(wallet) {
           <a>Upload</a>
       </Link>
 
-      {wallet ? 
+      {/* {wallet ? 
          <LoginBtn>{wallet.wallet}</LoginBtn>
-      :
+      : */}
         <LoginBtn> Connect Wallet </LoginBtn>
-      }
-
-    
+      {/* } */}
 
     </HeaderContainer>
   )

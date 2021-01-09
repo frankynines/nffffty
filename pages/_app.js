@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Archivo Black', sans-serif;
         background-color: white;
         color: black;
-        overflow: ${({ overflow }) => overflow};;
+        /* overflow: ${({ overflow }) => overflow};; */
       }
       a:link, a:hover, a:visited {
         text-decoration: none;
@@ -86,11 +86,11 @@ const GlobalStyle = createGlobalStyle`
 function MyApp({ Component, pageProps }) {
 
   const [BodyOverFlow, setBodyOverFlow] = useState("auto");
-  const [UserWallet, setUserWallet] = useState("");
+  const [UserWallet, setUserWallet] = useState(null);
 
   useEffect(() => {
     console.log("USE EFFECT");
-    ethEnabled();
+   // ethEnabled();
   }, [])
 
   const ethEnabled = () => {

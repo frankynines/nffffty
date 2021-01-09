@@ -40,11 +40,11 @@ export default function Header(wallet) {
           <a>Upload</a>
       </Link>
 
-      {/* {wallet ? 
+      {wallet.wallet ? 
          <LoginBtn>{wallet.wallet}</LoginBtn>
-      : */}
+      :
         <LoginBtn> Connect Wallet </LoginBtn>
-      {/* } */}
+      }
 
     </HeaderContainer>
   )

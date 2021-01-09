@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 
-const Container = styled.div`
+const CellContainer = styled.div`
   background-color: white;
   padding: 10px;
 
@@ -40,7 +40,7 @@ margin: 0;
 
 export default function TokenCell(image) {
   return (
-    <Container>
+    <CellContainer>
       <Link href="/token/[id]" as={`/token/${image.image.ipfs_pin_hash}`}>
         <a>
           <ImageContainer>
@@ -54,7 +54,7 @@ export default function TokenCell(image) {
         </a>     
 
       </Link>
-    </Container>
+    </CellContainer>
   )
 };
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import styled from 'styled-components';
 
 
-const Container = styled.div`
+const FooterContainer = styled.div`
   background-color: white;
     display: grid;
     justify-content: center;
@@ -17,10 +17,10 @@ const Container = styled.div`
 
 export default function Footer() {
   return (
-    <Container>
+    <FooterContainer>
           
       <p>A community art project by @frankynines - Donate: 0x2Eb9b439Ffb7dC587198e1534e465a6242192b24</p>
 
-    </Container>
+    </FooterContainer>
   )
 };

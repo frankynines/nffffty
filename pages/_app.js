@@ -88,12 +88,12 @@ function MyApp({ Component, pageProps }) {
   const [BodyOverFlow, setBodyOverFlow] = useState("auto");
   const [UserWallet, setUserWallet] = useState(null);
 
-  useEffect(() => {
-    console.log("USE EFFECT");
-   // ethEnabled();
-  }, [])
+  // useEffect(() => {
+  //   console.log("USE EFFECT");
+  //  // ethEnabled();
+  // }, [])
 
-  const ethEnabled = () => {
+  const actionEnableEth = () => {
     if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider);
       window.ethereum.enable();
@@ -106,7 +106,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
         <GlobalStyle overflow={BodyOverFlow}/>
-        <Header wallet={UserWallet}/>
+        <Header wallet={UserWallet} action={actionEnableEth}/>
         <Component {...pageProps}/>
         <Footer />
     </>

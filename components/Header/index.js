@@ -26,9 +26,12 @@ const LoginBtn = styled.div`
    border-radius: 20px;
 `;
 
-
-export default function Header(wallet) {
+export default function Header(wallet, action) {
   console.log(wallet.wallet)
+
+  const loginBtnAction = () => {
+    this.action();
+  }
   return (
     <HeaderContainer>
           
@@ -41,9 +44,9 @@ export default function Header(wallet) {
       </Link>
 
       {wallet.wallet ? 
-         <LoginBtn>{wallet.wallet}</LoginBtn>
+        <LoginBtn>{wallet.wallet}</LoginBtn>
       :
-        <LoginBtn> Connect Wallet </LoginBtn>
+        <LoginBtn onClick={loginBtnAction}> Connect Wallet </LoginBtn>
       }
 
     </HeaderContainer>
@@ -51,7 +54,8 @@ export default function Header(wallet) {
 };
 
 Header.propTypes = {
-  wallet: PropTypes.string
+  wallet: PropTypes.string,
+  action: PropTypes.func
 };
 
 

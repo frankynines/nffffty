@@ -85,7 +85,6 @@ const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }) {
 
-  const [BodyOverFlow, setBodyOverFlow] = useState("auto");
   const [UserWallet, setUserWallet] = useState(null);
 
   // useEffect(() => {
@@ -105,7 +104,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-        <GlobalStyle overflow={BodyOverFlow}/>
+        <GlobalStyle />
         <Header wallet={UserWallet} action={actionEnableEth}/>
         <Component {...pageProps}/>
         <Footer />

@@ -2,7 +2,6 @@ import Link from "next/link";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-
 const Cell = styled.div`
   background-color: white;
   padding: 10px;

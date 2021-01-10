@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import {listPins, removePinFromIPFS} from "../../../helpers/token";
 import styled from 'styled-components';
+import { getETHPrice } from '../../../helpers/coinbase';
 
 
 const Container = styled.div`
@@ -30,7 +31,6 @@ const Image = styled.div`
 const MetaDiv = styled.div`
   padding: 20px;
 `;
-
 
 const ButtonPrimary = styled.div`
    text-align: center;
@@ -87,6 +87,13 @@ export default function NFT() {
         });
     }
 
+    const getETHUSDPrice = (price) => {
+      getETHPrice().then (result => {
+        console.log(result)
+      });
+      return (price * 1010.00).toFixed(2) ;
+    }
+
     if (metaData) {
       return (
         <Container>
@@ -95,7 +102,7 @@ export default function NFT() {
           </Image>
           <MetaDiv>
           <h1>{metaData.metadata.keyvalues.name}</h1>
-          <h2>{metaData.metadata.keyvalues.price} ETH <Price>${metaData.metadata.keyvalues.price * 420}</Price></h2>
+          <h2>{metaData.metadata.keyvalues.price} ETH <Price>${getETHUSDPrice(metaData.metadata.keyvalues.price)}</Price></h2>
           
           <br />
           <h3>Description</h3>

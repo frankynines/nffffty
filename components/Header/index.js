@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
+import {truncateString} from '../../helpers/utils';
 
 const HeaderContainer = styled.div`
   background-color: white;
@@ -29,11 +29,11 @@ const LoginBtn = styled.div`
 export default function Header({wallet, action}) {
   console.log(wallet)
 
-
   return (
     <HeaderContainer>
-          
-      <div>Frankynines.crypto</div>
+      <Link href="/">
+        <a>Frankynines.crypto</a>
+      </Link>
       <Link href="/">
           <a>Shop NFTs</a>
       </Link>
@@ -42,7 +42,9 @@ export default function Header({wallet, action}) {
       </Link>
 
       {wallet ? 
-        <LoginBtn>{wallet}</LoginBtn>
+      <div>
+        <LoginBtn>{truncateString(wallet)}</LoginBtn>
+      </div>
       :
         <LoginBtn onClick={action}>Connect Wallet</LoginBtn>
       }

@@ -92,14 +92,38 @@ function MyApp({ Component, pageProps }) {
   //  // ethEnabled();
   // }, [])
 
-  const actionEnableEth = () => {
-    if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-      window.ethereum.enable();
-      setUserWallet(web3.eth.currentProvider.selectedAddress);
-      return true;
+  const actionEnableEth = async () => {
+
+    if(UserWallet) {
+      
     }
-    return false;
+
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum);
+      try {
+        // Request account access if needed
+        await window.ethereum.enable();
+        // Acccounts now exposed
+        // this.web3.eth.sendTransaction({/* ... */ });
+        setUserWallet(web3.eth.currentProvider.selectedAddress);
+
+      } catch (error) {
+        // User denied account access...
+      }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+      window.web3 = new Web3(this.web3.currentProvider);
+      // Acccounts always exposed
+      // this.web3.eth.sendTransaction({/* ... */ });
+      setUserWallet(web3.eth.currentProvider.selectedAddress);
+
+    }
+    // Non-dapp browsers...
+    else {
+      alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+
   }
 
   return (

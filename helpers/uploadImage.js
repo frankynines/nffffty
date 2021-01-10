@@ -1,13 +1,9 @@
   
 const fleek = require('@fleekhq/fleek-storage-js');  
-
 const axios = require('axios');
 const FormData = require('form-data');
 
-
-
 export const pinFileToIPFS = (image, params) => {
-  
 
   const url = 'https://api.pinata.cloud/pinning/pinFileToIPFS';
 
@@ -54,10 +50,7 @@ export const pinFileToIPFS = (image, params) => {
   });
 
 };
-
-
-
-//....//
+//
 
 export const uploadImage = async (data) => {
   const date = new Date();

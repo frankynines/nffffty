@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Web3 = require('web3');
+import ENS, { getEnsAddress } from '@ensdomains/ensjs'
+
 
 const GlobalStyle = createGlobalStyle`
     html,
@@ -87,16 +89,7 @@ function MyApp({ Component, pageProps }) {
 
   const [UserWallet, setUserWallet] = useState(null);
 
-  // useEffect(() => {
-  //   console.log("USE EFFECT");
-  //  // ethEnabled();
-  // }, [])
-
   const actionEnableEth = async () => {
-
-    if(UserWallet) {
-      
-    }
 
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum);
@@ -105,7 +98,8 @@ function MyApp({ Component, pageProps }) {
         await window.ethereum.enable();
         // Acccounts now exposed
         // this.web3.eth.sendTransaction({/* ... */ });
-        setUserWallet(web3.eth.currentProvider.selectedAddress);
+        const ensName = getENSName(web3.eth.currentProvider.selectedAddress, window.web3.currentProvider)
+        setUserWallet(ensName);
 
       } catch (error) {
         // User denied account access...
@@ -114,17 +108,32 @@ function MyApp({ Component, pageProps }) {
     // Legacy dapp browsers...
     else if (window.web3) {
       window.web3 = new Web3(this.web3.currentProvider);
-      // Acccounts always exposed
-      // this.web3.eth.sendTransaction({/* ... */ });
-      setUserWallet(web3.eth.currentProvider.selectedAddress);
-
+      const ensName = getENSName(web3.eth.currentProvider.selectedAddress, window.web3.currentProvider)
+      setUserWallet(ensName);
     }
     // Non-dapp browsers...
     else {
       alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
-
   }
+
+  const getENSName = (addy, provider) => {
+    const ens = new ENS({ provider, ensAddress: getEnsAddress('1') });
+    return returnENSName(ens, addy);
+  }
+
+  const returnENSName = async (ens, address) => {
+    var name = await ens.getName(address)
+    console.log(name)
+
+    // // Check to be sure the reverse record is correct.
+    // if(address != await ens.name(name).getAddress()) {
+    //   name = null;
+    // }
+
+    // console.log(name)
+  }
+  
 
   return (
     <>
@@ -135,6 +144,7 @@ function MyApp({ Component, pageProps }) {
     </>
     );
   }
+
 
   MyApp.getInitialProps = async (ctx) => {
     const res = await fetch('https://api.github.com/repos/vercel/next.js')
